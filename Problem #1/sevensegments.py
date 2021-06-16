@@ -1,4 +1,5 @@
 import os
+from time import sleep
 
 digits = {
     0 : [' __ ', '|  |', '|__|'],
@@ -23,7 +24,23 @@ def printByRow(display):
     for i in range(0, 3) :
         print(digits[display[0]][i], digits[display[1]][i], justColon[i], digits[display[2]][i], digits[display[3]][i], justColon[i], digits[display[4]][i], digits[display[5]][i])
 
-displayNum = [1,1,1,1,1,1]
+def countdown(intTimer) :
+    hr, mi, se = [n for n in intTimer]
+    while (hr >= 0) :
+        while (mi >= 0) :
+            while (se >= 0) :
+                displayNum = [hr // 10, hr % 10, mi // 10, mi % 10, se // 10, se % 10]
+                clear()
+                printByRow(displayNum)
+                sleep(1)
+                se -= 1
+            se = 59
+            mi -= 1
+        mi = 59
+        hr -= 1
+    print("time's up!")
+
+displayNum = []
 displayEmpty = [-1,-1,-1,-1,-1,-1]
 
 clockInput = input()
@@ -34,11 +51,11 @@ try :
     displayNum = [int(c) for c in clockInput if c != ':']
 
     if (intTimer[1] > 59 or intTimer[1] < 0 or intTimer[2] > 59 or intTimer[2] < 0 or len(timer[1]) < 2 or len(timer[2]) < 2) :
-        #clear()
+        clear()
         printByRow(displayEmpty)
 
     else :
-        printByRow(displayNum)
-        
+        countdown(intTimer)
+
 except :
     printByRow(displayEmpty)
