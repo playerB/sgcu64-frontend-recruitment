@@ -30,15 +30,15 @@ clockInput = input()
 timer = clockInput.split(':')
 try : 
     intTimer = [int(n) for n in timer]
+    
+    displayNum = [int(c) for c in clockInput if c != ':']
+
+    if (intTimer[1] > 59 or intTimer[1] < 0 or intTimer[2] > 59 or intTimer[2] < 0 or len(timer[1]) < 2 or len(timer[2]) < 2) :
+        #clear()
+        printByRow(displayEmpty)
+
+    else :
+        printByRow(displayNum)
+        
 except :
     printByRow(displayEmpty)
-
-displayNum = [int(c) for c in clockInput if c != ':']
-
-
-if (intTimer[1] > 59 or intTimer[1] < 0 or intTimer[2] > 59 or intTimer[2] < 0 or len(timer[1]) < 2 or len(timer[2]) < 2) :
-    #clear()
-    printByRow(displayEmpty)
-
-else :
-    printByRow(displayNum)
