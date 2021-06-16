@@ -1,12 +1,5 @@
 import os
 
-def clear():
-    os.system('cls')
-
-def printByRow(display):
-    for i in range(0, 3) :
-        print(digits[display[0]][i], digits[display[1]][i], digits[display[2]][i], digits[display[3]][i], digits[display[4]][i], digits[display[5]][i])
-
 digits = {
     0 : [' __ ', '|  |', '|__|'],
     1 : ['    ', '   |', '   |'],
@@ -18,20 +11,34 @@ digits = {
     7 : [' __ ', '   |', '   |'],
     8 : [' __ ', '|__|', '|__|'],
     9 : [' __ ', '|__|', ' __|'],
-    'space' : ['    ', '    ', ' __ '],
-    'colon' : ['   ', ' . ', ' . ']
+    -1 : ['    ', '    ', ' __ ']
 }
 
-displayNum = [7,8,9,0,'space','colon']
+justColon = ['   ', ' . ', ' . ']
 
-timer = input().split(':')
-intTimer = [int(n) for n in timer]
+def clear():
+    os.system('cls')
 
-if (intTimer[1] > 59 or intTimer[2] > 59) :
-    print('Error')
+def printByRow(display):
+    for i in range(0, 3) :
+        print(digits[display[0]][i], digits[display[1]][i], justColon[i], digits[display[2]][i], digits[display[3]][i], justColon[i], digits[display[4]][i], digits[display[5]][i])
+
+displayNum = [1,1,1,1,1,1]
+displayEmpty = [-1,-1,-1,-1,-1,-1]
+
+clockInput = input()
+timer = clockInput.split(':')
+try : 
+    intTimer = [int(n) for n in timer]
+except :
+    printByRow(displayEmpty)
+
+displayNum = [int(c) for c in clockInput if c != ':']
+
+
+if (intTimer[1] > 59 or intTimer[1] < 0 or intTimer[2] > 59 or intTimer[2] < 0 or len(timer[1]) < 2 or len(timer[2]) < 2) :
+    #clear()
+    printByRow(displayEmpty)
 
 else :
     printByRow(displayNum)
-
-
-
