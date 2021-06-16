@@ -18,10 +18,11 @@ digits = {
     7 : [' __ ', '   |', '   |'],
     8 : [' __ ', '|__|', '|__|'],
     9 : [' __ ', '|__|', ' __|'],
-    'space' : [' __ ', ' __ ', ' __ ']
+    'space' : ['    ', '    ', ' __ '],
+    'colon' : ['   ', ' . ', ' . ']
 }
 
-displayNum = [1,2,3,4,5,6]
+displayNum = [7,8,9,0,'space','colon']
 
 timer = input().split(':')
 intTimer = [int(n) for n in timer]
