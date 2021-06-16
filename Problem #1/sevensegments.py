@@ -1,4 +1,5 @@
 import os
+import winsound
 from time import sleep
 
 digits = {
@@ -38,7 +39,10 @@ def countdown(intTimer) :
             mi -= 1
         mi = 59
         hr -= 1
-    print("time's up!")
+    winsound.Beep(555, 3000)
+    print("\n\nข้อความอัตโนมัติ : ฮ่า ฮ่า ฮ่าาา !! เจ้าพวกผู้กอบกู้ ! ระเบิดเวลาได้ทำงานแล้ว !")
+    sleep(3)
+    print("\nแผ่นดินทั้ง 7 จะถูกแยกออกจากกัน และพวกแกก็จะต้องติดอยู่ที่นี่ตลอดไปปปป ฮ่า ฮ่า ฮ่าาา !!")
 
 displayNum = []
 displayEmpty = [-1,-1,-1,-1,-1,-1]
