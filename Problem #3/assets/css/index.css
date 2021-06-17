@@ -135,20 +135,23 @@ button:hover {
   }
 
   .register-card {
-    flex: 1;
-    margin: 86px 0 88px 0px;
-    padding: 36px 58px 20px 59px;
-    max-width: 255px;
+    position: relative;
+    top: 0;
+    left: 1000px;
+    margin: 90px 0 40px 0;
+    padding: 30px 20px 40px;
+    max-width: 350px;
   }
 
   .kite {
     /* USER CODE Begin: Control kite */
     display: block;
     position: absolute;
-    width: 400px;
+    width: 37%;
+    max-width: 500px;
     height: auto;
-    left: 111px;
-    top: 111px;
+    left: 10%;
+    top: 20%;
     /* USER CODE END: Control kite */
   }
 
@@ -156,7 +159,8 @@ button:hover {
     /* USER CODE Begin: Style cloud */
     display: block;
     position: absolute;
-    width: 200px;
+    width: 25%;
+    max-width: 300px;
     height: auto;
 
     mix-blend-mode: darken;
@@ -187,9 +191,7 @@ button:hover {
 
   input {
     /* USER CODE Begin: Style the input field */
-    border: 1px solid lightgrey;
-    margin: 10px 0;
-    line-height: 1.5em;
+    margin: 1em 2.5em;
     /* USER CODE END: Style the input field */
   }
 
@@ -210,6 +212,5 @@ button:hover {
 
   .content {
     justify-content: space-between;
-    margin-right: 122px;
   }
 }
