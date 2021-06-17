@@ -1,3 +1,9 @@
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   --chula-pink: #de5c8e;
   --chula-pink-dark: #c5527e;
@@ -27,7 +33,20 @@ body {
 
 .register-card {
   /* USER CODE Begin: Style the card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  flex: 1;
+  margin: 86px 0 88px 0px;
+  padding: 36px 58px 69px 59px;
+  max-width: 377px;
 
+  background: #FFFFFF;
+  box-shadow: 0px 1px 5px rgba(16, 16, 16, 0.15);
+  border-radius: 8px;
   /* USER CODE End: Style the card */
 }
 
@@ -49,7 +68,9 @@ body {
 
 input {
   /* USER CODE Begin: Style the input field */
-
+  border: 1px solid lightgrey;
+  margin: 10px 0;
+  line-height: 1.5em;
   /* USER CODE END: Style the input field */
 }
 
@@ -64,7 +85,9 @@ input:focus {
 
 button {
   /* USER CODE Begin: Style the button */
-
+  display: block;
+  width: 218px;
+  background-color: var(--chula-pink-dark);
   /* USER CODE END: Style the button */
 }
 
@@ -76,7 +99,7 @@ button:hover {
 .cloud,
 .footer {
   /* USER CODE Begin: Hide it */
-
+  display: none;
   /* USER CODE END: Hide it  */
 }
 
@@ -87,7 +110,7 @@ button:hover {
 }
 
 /* USER CODE Begin: Manage screen width */
-@media screen and (min-width: 0px) {
+@media screen and (min-width: 1440px) {
   /* USER CODE END: Manage screen width */
   body {
     background: url("../img/bg-desktop.svg");
@@ -106,43 +129,59 @@ button:hover {
   .register-card {
     flex: 1;
     margin: 86px 0 88px 0px;
-    padding: 36px 58px 69px 59px;
+    padding: 36px 58px 20px 59px;
     max-width: 377px;
   }
 
   .kite {
     /* USER CODE Begin: Control kite */
-
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: auto;
+    left: 111px;
+    top: 111px;
     /* USER CODE END: Control kite */
   }
 
   .cloud {
     /* USER CODE Begin: Style cloud */
+    display: block;
+    position: absolute;
+    width: 200px;
+    height: auto;
 
+    mix-blend-mode: darken;
     /* USER CODE END: Style kite */
   }
 
   .cloud.cloud1 {
     /* USER CODE Begin: Control cloud1 */
-
+    left: 57px;
+    top: 121px;
     /* USER CODE END: Control cloud1 */
   }
 
   .cloud.cloud2 {
     /* USER CODE Begin: Control cloud2 */
-
+    left: 514px;
+    top: 277px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
     /* USER CODE END: Control cloud2 */
   }
 
   .cloud.cloud3 {
     /* USER CODE Begin: Control cloud3*/
-
+    left: 57px;
+    top: 525px;
     /* USER CODE END: Control cloud3 */
   }
 
   input {
     /* USER CODE Begin: Style the input field */
-
+    border: 1px solid lightgrey;
+    margin: 10px 0;
+    line-height: 1.5em;
     /* USER CODE END: Style the input field */
   }
 
