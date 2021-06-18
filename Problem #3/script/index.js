@@ -1,25 +1,35 @@
 const form = document.getElementById("register-form");
-form.addEventListener("submit", (event) => {
-    //event.preventDefault();
-    const formData = new FormData(form);
-    const data = {};
-    for (const [key, value] of formData.entries()) {
-        /* USER CODE Begin: Validate data */
-        data[key] = value;
-        if (data["password"] != data["confirmpassword"]) {
-			document
-                .getElementById("confirmpassword")
-                .setCustomValidity("Password confirmation mismatch");
-            document.getElementById("confirmpassword").reportValidity();
-        } else {
-            document.getElementById("confirmpassword").setCustomValidity('');
-			document.getElementById("confirmpassword").reportValidity();
-        }
-        /* USER CODE Begin: Validate data */
-    }
-    console.log(data);
-	console.log(data["password"] != data["confirmpassword"]);
-    /* USER CODE Begin: What happened next after recieve form data (Optional) */
+const inputPassword = document.getElementById("password");
+const inputConfirmPassword = document.getElementById("confirmpassword");
 
-    /* USER CODE END: What happened next after recieve form data (Optional) */
+function checkStrongPassword() {
+	const strongPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})")
+	if (strongPassword.test(inputPassword.value)) {
+		inputPassword.setCustomValidity("");
+		inputPassword.reportValidity();
+	} else {
+		inputPassword.setCustomValidity("Your password must contain\n- at least 8 characters\n- at least one capital letter\n- at least one small letter\n- at least one number");
+		inputPassword.reportValidity();
+	}
+}
+
+function checkConfirmPassword() {
+	if (inputPassword.value == inputConfirmPassword.value && inputConfirmPassword.value != '') {
+		inputConfirmPassword.setCustomValidity("");
+		inputPassword.reportValidity();
+	} else {
+		inputConfirmPassword.setCustomValidity("Password confirmation mismatch");
+		inputPassword.reportValidity();
+	}
+}
+
+form.addEventListener("submit", event => {
+	event.preventDefault();
+	console.log("Form submitted!");
+	const formData = new FormData(form);
+	const data = {};
+	for (const [key, value] of formData.entries()) data[key] = value;
+	console.log(data);
 });
+inputPassword.addEventListener("input", checkStrongPassword, checkConfirmPassword);
+inputConfirmPassword.addEventListener("input", checkConfirmPassword);
