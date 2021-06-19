@@ -146,29 +146,28 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(245, 245);
+            this.label5.Location = new System.Drawing.Point(69, 212);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(300, 31);
+            this.label5.Size = new System.Drawing.Size(654, 39);
             this.label5.TabIndex = 0;
             this.label5.Text = "Successfully logged out";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // logDetails
             // 
-            this.logDetails.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.logDetails.AutoSize = true;
+            this.logDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logDetails.Location = new System.Drawing.Point(257, 316);
+            this.logDetails.Location = new System.Drawing.Point(0, 0);
             this.logDetails.Name = "logDetails";
-            this.logDetails.Size = new System.Drawing.Size(277, 31);
+            this.logDetails.Size = new System.Drawing.Size(814, 622);
             this.logDetails.TabIndex = 0;
             this.logDetails.Text = "phoneNum at location";
             this.logDetails.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ok
             // 
-            this.ok.Location = new System.Drawing.Point(345, 417);
+            this.ok.Location = new System.Drawing.Point(359, 417);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(89, 38);
             this.ok.TabIndex = 3;
@@ -179,7 +178,7 @@
             // allLocationPop
             // 
             this.allLocationPop.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.allLocationPop.Location = new System.Drawing.Point(213, 209);
+            this.allLocationPop.Location = new System.Drawing.Point(208, 209);
             this.allLocationPop.Multiline = true;
             this.allLocationPop.Name = "allLocationPop";
             this.allLocationPop.ReadOnly = true;
@@ -192,20 +191,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 622);
-            this.Controls.Add(this.logDetails);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.chooseLoc);
             this.Controls.Add(this.ok);
             this.Controls.Add(this.buttonContinue);
-            this.Controls.Add(this.allLocationPop);
             this.Controls.Add(this.phoneNum);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.allLocationPop);
+            this.Controls.Add(this.logDetails);
             this.Name = "Form1";
             this.Text = "ChulaChana";
             this.Load += new System.EventHandler(this.Form1_Load);

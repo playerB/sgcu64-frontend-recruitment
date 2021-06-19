@@ -56,6 +56,15 @@ namespace ChulaChana
             label3.Text = "Enter your phone number :";
         }
 
+        private void disablePhoneAndLoc()
+        {
+            label3.Visible = false;
+            label4.Visible = false;
+            phoneNum.Visible = false;
+            chooseLoc.Visible = false;
+            buttonContinue.Visible = false;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             mode = "checkin";
@@ -71,12 +80,16 @@ namespace ChulaChana
 
         private void buttonContinue_Click(object sender, EventArgs e)
         {
-            if (phoneNum.Text == "" || chooseLoc.Text == "")
-            {
-                label5.Text = "Please enter phone number and/or check in location!";
-            }
             if (mode == "checkin")
             {
+                if (phoneNum.Text == "" || chooseLoc.Text == "")
+                {
+                    label5.Text = "Please enter phone number and/or location!";
+                    label5.Visible = true;
+                    ok.Visible = true;
+                    disablePhoneAndLoc();
+                    return;
+                }
                 if (location.locationPop.ContainsKey(chooseLoc.Text)) location.locationPop[chooseLoc.Text].Add(phoneNum.Text);
                 else location.locationPop.Add(chooseLoc.Text, new List<string>() { phoneNum.Text });
                 label5.Text = "Successfully logged in";
@@ -86,6 +99,14 @@ namespace ChulaChana
                 ok.Visible = true;
             } else //mode == "checkout"
             {
+                if (phoneNum.Text == "")
+                {
+                    label5.Text = "Please enter phone number!";
+                    label5.Visible = true;
+                    ok.Visible = true;
+                    disablePhoneAndLoc();
+                    return;
+                }
                 bool foundPhoneNum = false;
                 foreach (string loc in location.locationPop.Keys)
                 {
@@ -112,11 +133,7 @@ namespace ChulaChana
                     ok.Visible = true;
                 }
             }
-            label3.Visible = false;
-            label4.Visible = false;
-            phoneNum.Visible = false;
-            chooseLoc.Visible = false;
-            buttonContinue.Visible = false;
+            disablePhoneAndLoc();
         }
 
         private void Form1_Load(object sender, EventArgs e)
