@@ -71,6 +71,10 @@ namespace ChulaChana
 
         private void buttonContinue_Click(object sender, EventArgs e)
         {
+            if (phoneNum.Text == "" || chooseLoc.Text == "")
+            {
+                label5.Text = "Please enter phone number and/or check in location!";
+            }
             if (mode == "checkin")
             {
                 if (location.locationPop.ContainsKey(chooseLoc.Text)) location.locationPop[chooseLoc.Text].Add(phoneNum.Text);
@@ -113,7 +117,6 @@ namespace ChulaChana
             phoneNum.Visible = false;
             chooseLoc.Visible = false;
             buttonContinue.Visible = false;
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -127,6 +130,7 @@ namespace ChulaChana
             showMainMenu();
             phoneNum.Text = "";
             chooseLoc.Text = "";
+            allLocationPop.Text = "";
             ok.Visible = false;
             label5.Visible = false;
             logDetails.Visible = false;
@@ -140,7 +144,7 @@ namespace ChulaChana
             button3.Visible = false;
             foreach (string loc in location.locationPop.Keys)
             {
-                allLocationPop.Text += loc + " : "+ location.locationPop[loc].Count + "\n";
+                allLocationPop.Text += loc + " : "+ location.locationPop[loc].Count + "\r\n";
             }
             allLocationPop.Visible = true;
             ok.Visible = true;

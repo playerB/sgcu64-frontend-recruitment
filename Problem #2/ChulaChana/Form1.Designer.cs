@@ -159,16 +159,16 @@
             this.logDetails.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.logDetails.AutoSize = true;
             this.logDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logDetails.Location = new System.Drawing.Point(257, 307);
+            this.logDetails.Location = new System.Drawing.Point(257, 316);
             this.logDetails.Name = "logDetails";
             this.logDetails.Size = new System.Drawing.Size(277, 31);
             this.logDetails.TabIndex = 0;
             this.logDetails.Text = "phoneNum at location";
-            this.logDetails.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.logDetails.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ok
             // 
-            this.ok.Location = new System.Drawing.Point(359, 526);
+            this.ok.Location = new System.Drawing.Point(345, 417);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(89, 38);
             this.ok.TabIndex = 3;
