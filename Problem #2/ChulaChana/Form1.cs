@@ -65,6 +65,41 @@ namespace ChulaChana
             buttonContinue.Visible = false;
         }
 
+        private void nowCheckIn()
+        {
+            if (location.locationPop.ContainsKey(chooseLoc.Text)) location.locationPop[chooseLoc.Text].Add(phoneNum.Text);
+            else location.locationPop.Add(chooseLoc.Text, new List<string>() { phoneNum.Text });
+            label5.Text = "Successfully logged in";
+            logDetails.Text = phoneNum.Text + " at " + chooseLoc.Text;
+            label5.Visible = true;
+            logDetails.Visible = true;
+            ok.Visible = true;
+        }
+
+        private bool findCheckOut()
+        {
+            bool foundPhoneNum = false;
+            foreach (string loc in location.locationPop.Keys)
+            {
+                string[] locCopy = new string[location.locationPop[loc].Count];
+                location.locationPop[loc].CopyTo(locCopy);
+                foreach (string phone in locCopy)
+                {
+                    if (phoneNum.Text == phone)
+                    {
+                        location.locationPop[loc].Remove(phone);
+                        foundPhoneNum = true;
+                        label5.Text = "Successfully logged out";
+                        logDetails.Text = phone + " at " + loc;
+                        logDetails.Visible = true;
+                        label5.Visible = true;
+                        ok.Visible = true;
+                    }
+                }
+            }
+            return foundPhoneNum;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             mode = "checkin";
@@ -90,13 +125,8 @@ namespace ChulaChana
                     disablePhoneAndLoc();
                     return;
                 }
-                if (location.locationPop.ContainsKey(chooseLoc.Text)) location.locationPop[chooseLoc.Text].Add(phoneNum.Text);
-                else location.locationPop.Add(chooseLoc.Text, new List<string>() { phoneNum.Text });
-                label5.Text = "Successfully logged in";
-                logDetails.Text = phoneNum.Text + " at " + chooseLoc.Text;
-                label5.Visible = true;
-                logDetails.Visible = true;
-                ok.Visible = true;
+                findCheckOut();
+                nowCheckIn();
             } else //mode == "checkout"
             {
                 if (phoneNum.Text == "")
@@ -107,26 +137,7 @@ namespace ChulaChana
                     disablePhoneAndLoc();
                     return;
                 }
-                bool foundPhoneNum = false;
-                foreach (string loc in location.locationPop.Keys)
-                {
-                    string[] locCopy = new string[location.locationPop[loc].Count];
-                    location.locationPop[loc].CopyTo(locCopy);
-                    foreach (string phone in locCopy)
-                    {
-                        if (phoneNum.Text == phone)
-                        {
-                            location.locationPop[loc].Remove(phone);
-                            foundPhoneNum = true;
-                            label5.Text = "Successfully logged out";
-                            logDetails.Text = phone + " at " + loc;
-                            logDetails.Visible = true;
-                            label5.Visible = true;
-                            ok.Visible = true;
-                        }
-                    }
-                }
-                if (!foundPhoneNum)
+                if (!findCheckOut())
                 {
                     logDetails.Visible = true;
                     logDetails.Text = "Phone number not found";
