@@ -1,0 +1,10 @@
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\bin\Debug\ChulaChana.exe.config
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\bin\Debug\ChulaChana.exe
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\bin\Debug\ChulaChana.pdb
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\obj\Debug\ChulaChana.csprojAssemblyReference.cache
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\obj\Debug\ChulaChana.Form1.resources
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\obj\Debug\ChulaChana.Properties.Resources.resources
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\obj\Debug\ChulaChana.csproj.GenerateResource.cache
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\obj\Debug\ChulaChana.csproj.CoreCompileInputs.cache
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\obj\Debug\ChulaChana.exe
+C:\Users\skbra\sgcu64-frontend-recruitment\Problem #2\ChulaChana\obj\Debug\ChulaChana.pdb

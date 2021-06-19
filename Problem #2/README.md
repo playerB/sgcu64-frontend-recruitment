@@ -98,3 +98,4 @@ Please input any number: 3
 # Applicant Section
 
 ตั้งแต่ส่วนนี้ลงไป เป็นส่วนที่ผู้สมัครสามารถแก้ไขได้ตามอัธยาศัย ซึ่งอาจจะเป็นข้อสันนิษฐานหรือไอเดียเพิ่มเติมก็ได้
+Windows form app written in C# | .Net framwork 4.7.2
