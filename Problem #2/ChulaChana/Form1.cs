@@ -12,7 +12,7 @@ namespace ChulaChana
 {
     public partial class Form1 : Form
     {
-        private Location location = new Location();
+        private Database locAndPopData = new Database();
         private string mode = "checkin";
         public Form1()
         {
@@ -67,8 +67,15 @@ namespace ChulaChana
 
         private void nowCheckIn()
         {
-            if (location.locationPop.ContainsKey(chooseLoc.Text)) location.locationPop[chooseLoc.Text].Add(phoneNum.Text);
-            else location.locationPop.Add(chooseLoc.Text, new List<string>() { phoneNum.Text });
+            if (locAndPopData.locationPop.ContainsKey(chooseLoc.Text))
+            {
+                locAndPopData.locationPop[chooseLoc.Text].Add(phoneNum.Text);
+            }
+            else
+            {
+                locAndPopData.locationPop.Add(chooseLoc.Text, new List<string>() { phoneNum.Text });
+            }
+            locAndPopData.phoneAndLocation[phoneNum.Text] = chooseLoc.Text;
             label5.Text = "Successfully logged in";
             logDetails.Text = phoneNum.Text + " at " + chooseLoc.Text;
             label5.Visible = true;
@@ -79,23 +86,17 @@ namespace ChulaChana
         private bool findCheckOut()
         {
             bool foundPhoneNum = false;
-            foreach (string loc in location.locationPop.Keys)
+            if (locAndPopData.phoneAndLocation.ContainsKey(phoneNum.Text))
             {
-                string[] locCopy = new string[location.locationPop[loc].Count];
-                location.locationPop[loc].CopyTo(locCopy);
-                foreach (string phone in locCopy)
-                {
-                    if (phoneNum.Text == phone)
-                    {
-                        location.locationPop[loc].Remove(phone);
-                        foundPhoneNum = true;
-                        label5.Text = "Successfully logged out";
-                        logDetails.Text = phone + " at " + loc;
-                        logDetails.Visible = true;
-                        label5.Visible = true;
-                        ok.Visible = true;
-                    }
-                }
+                string currentLocation = locAndPopData.phoneAndLocation[phoneNum.Text];
+                locAndPopData.locationPop[currentLocation].Remove(phoneNum.Text);
+                locAndPopData.phoneAndLocation.Remove(phoneNum.Text);
+                label5.Text = "Successfully logged out";
+                foundPhoneNum = true;
+                logDetails.Text = phoneNum.Text + " at " + currentLocation;
+                logDetails.Visible = true;
+                label5.Visible = true;
+                ok.Visible = true;
             }
             return foundPhoneNum;
         }
@@ -149,7 +150,7 @@ namespace ChulaChana
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string[] listLoc = location.locationPop.Keys.ToArray();
+            string[] listLoc = locAndPopData.locationPop.Keys.ToArray();
             chooseLoc.Items.AddRange(listLoc);
         }
 
@@ -170,18 +171,19 @@ namespace ChulaChana
             button1.Visible = false;
             button2.Visible = false;
             button3.Visible = false;
-            foreach (string loc in location.locationPop.Keys)
+            foreach (string loc in locAndPopData.locationPop.Keys)
             {
-                allLocationPop.Text += loc + " : "+ location.locationPop[loc].Count + "\r\n";
+                allLocationPop.Text += loc + " : "+ locAndPopData.locationPop[loc].Count + "\r\n";
             }
             allLocationPop.Visible = true;
             ok.Visible = true;
         }
     }
 
-    class Location
+    class Database
     {
-        public List<string> phone = new List<string>();
+        public Dictionary<string, string> phoneAndLocation = new Dictionary<string, string>();
+
         public Dictionary<string, List<string>> locationPop = new Dictionary<string, List<string>>() {
                 {"Mahamakut Building", new List<string>() },
                 {"Sara Phra Kaew", new List<string>() },
