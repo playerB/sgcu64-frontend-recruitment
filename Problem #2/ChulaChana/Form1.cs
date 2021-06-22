@@ -12,7 +12,7 @@ namespace ChulaChana
 {
     public partial class Form1 : Form
     {
-        private Database locAndPopData = new Database();
+        private Database locAndPopData = new Database(); // init database
         private string mode = "checkin";
         public Form1()
         {
@@ -28,7 +28,7 @@ namespace ChulaChana
             allLocationPop.Visible = false;
         }
 
-        private void showPhoneAndLoc()
+        private void showPhoneAndLoc() // show phone number and location inputs, buttons
         {
             button1.Visible = false;
             button2.Visible = false;
@@ -43,7 +43,7 @@ namespace ChulaChana
             }
         }
 
-        private void showMainMenu()
+        private void showMainMenu() // show main menu buttons
         {
             button1.Visible = true;
             button2.Visible = true;
@@ -56,7 +56,7 @@ namespace ChulaChana
             label3.Text = "Enter your phone number :";
         }
 
-        private void disablePhoneAndLoc()
+        private void disablePhoneAndLoc() // disable phone number and location inputs, buttons
         {
             label3.Visible = false;
             label4.Visible = false;
@@ -65,7 +65,7 @@ namespace ChulaChana
             buttonContinue.Visible = false;
         }
 
-        private void nowCheckIn()
+        private void nowCheckIn() // check in user to a location
         {
             if (locAndPopData.locationPop.ContainsKey(chooseLoc.Text))
             {
@@ -83,7 +83,7 @@ namespace ChulaChana
             ok.Visible = true;
         }
 
-        private bool findCheckOut()
+        private bool findCheckOut() // find if a phone number is stored & remove it from current location
         {
             bool foundPhoneNum = false;
             if (locAndPopData.phoneAndLocation.ContainsKey(phoneNum.Text))
@@ -101,14 +101,14 @@ namespace ChulaChana
             return foundPhoneNum;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // check in ui
         {
             mode = "checkin";
             showPhoneAndLoc();
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) // check out ui
         {
             mode = "checkout";
             showPhoneAndLoc();
@@ -118,7 +118,7 @@ namespace ChulaChana
         {
             if (mode == "checkin")
             {
-                if (phoneNum.Text == "" || chooseLoc.Text == "")
+                if (phoneNum.Text == "" || chooseLoc.Text == "") // error message if input fields are empty
                 {
                     label5.Text = "Please enter phone number and/or location!";
                     label5.Visible = true;
@@ -130,7 +130,7 @@ namespace ChulaChana
                 nowCheckIn();
             } else //mode == "checkout"
             {
-                if (phoneNum.Text == "")
+                if (phoneNum.Text == "") // error message if phone number input field is empty
                 {
                     label5.Text = "Please enter phone number!";
                     label5.Visible = true;
@@ -138,7 +138,7 @@ namespace ChulaChana
                     disablePhoneAndLoc();
                     return;
                 }
-                if (!findCheckOut())
+                if (!findCheckOut()) // error message cannot find phone number in database
                 {
                     logDetails.Visible = true;
                     logDetails.Text = "Phone number not found";
@@ -154,7 +154,7 @@ namespace ChulaChana
             chooseLoc.Items.AddRange(listLoc);
         }
 
-        private void ok_Click(object sender, EventArgs e)
+        private void ok_Click(object sender, EventArgs e) // back to main menu
         {
             showMainMenu();
             phoneNum.Text = "";
@@ -166,7 +166,7 @@ namespace ChulaChana
             allLocationPop.Visible = false;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) // show current population in locations
         {
             button1.Visible = false;
             button2.Visible = false;
@@ -180,7 +180,7 @@ namespace ChulaChana
         }
     }
 
-    class Database
+    class Database // class to store all user phone number and location
     {
         public Dictionary<string, string> phoneAndLocation = new Dictionary<string, string>();
 
