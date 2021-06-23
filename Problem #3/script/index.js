@@ -31,5 +31,9 @@ form.addEventListener("submit", event => {
 	for (const [key, value] of formData.entries()) data[key] = value;
 	console.log(data);
 });
-inputPassword.addEventListener("input", checkStrongPassword, checkConfirmPassword);
+
+inputPassword.addEventListener("input", () => {
+	checkStrongPassword();
+	checkConfirmPassword();
+});
 inputConfirmPassword.addEventListener("input", checkConfirmPassword);
